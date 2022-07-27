@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 public class CreateCustomerUseCase {
+    
     private final CustomerRepository customerRepository;
 
     public OutputCreateCustomerDto execute(InputCreateCustomerDto inputCreateCustomerDto) {

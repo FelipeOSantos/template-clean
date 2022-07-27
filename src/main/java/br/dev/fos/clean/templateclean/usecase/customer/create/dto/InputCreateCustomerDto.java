@@ -15,5 +15,6 @@ import lombok.ToString;
 @ToString
 public class InputCreateCustomerDto {
     private String name;
+    private Integer age;
     private AddressDTO address;
 }

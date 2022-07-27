@@ -1,5 +1,6 @@
 package br.dev.fos.clean.templateclean.usecase.customer.create;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.doReturn;
@@ -36,6 +37,7 @@ public class CreateCustomerUseCaseUnitTest {
 
         InputCreateCustomerDto inputCreateCustomerDto = new InputCreateCustomerDto();
         inputCreateCustomerDto.setName("Felipe");
+        inputCreateCustomerDto.setAge(34);
         
         Customer customer = new Customer("Felipe", 34);
 
@@ -49,19 +51,22 @@ public class CreateCustomerUseCaseUnitTest {
     }
 
     @Test
-    void saveCustomerNUllName() {
+    void saveCustomerNullName() {
 
         InputCreateCustomerDto inputCreateCustomerDto = new InputCreateCustomerDto();
-        inputCreateCustomerDto.setName("");
+        inputCreateCustomerDto.setAge(34);
         
-        Customer customer = new Customer("Felipe", 34);
+        //Customer customer = new Customer("Felipe", 34);
 
-        doReturn(customerMock).when(customerRepository).save(customer);
+        //doReturn(customerMock).when(customerRepository).save(customer);
 
-        var outputCreateCustomerDto = createCustomerUseCase.execute(inputCreateCustomerDto);
+        //var outputCreateCustomerDto = createCustomerUseCase.execute(inputCreateCustomerDto);
 
-        assertNotNull(outputCreateCustomerDto);
-        assertEquals(customerMock.getName(), outputCreateCustomerDto.getName());
+        //assertNotNull(outputCreateCustomerDto);
+        //assertEquals(customerMock.getName(), outputCreateCustomerDto.getName());
+        assertThrows(NullPointerException.class, () -> {
+            createCustomerUseCase.execute(inputCreateCustomerDto);
+        });
 
     }
 }

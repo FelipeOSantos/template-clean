@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Data
@@ -23,6 +24,7 @@ public class Customer {
     @Id
     private String id;
 
+    @NonNull
     @Indexed(unique = true)
     private String name;
     private Integer age;
